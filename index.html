@@ -4,161 +4,846 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vivek Pochiraju | Portfolio</title>
-    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Futuristic animations */
+        @keyframes glowPulse {
+            0% { box-shadow: 0 0 5px rgba(59, 130, 246, 0.5); }
+            50% { box-shadow: 0 0 20px rgba(59, 130, 246, 0.8); }
+            100% { box-shadow: 0 0 5px rgba(59, 130, 246, 0.5); }
+        }
+
+        @keyframes borderFlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Skill card hover effect */
+        .skill-icon-wrapper {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-icon-wrapper::before {
+            content: '';
+            position: absolute;
+            top: -100%;
+            left: -100%;
+            width: 300%;
+            height: 300%;
+            background: linear-gradient(
+                45deg,
+                transparent 20%,
+                rgba(59, 130, 246, 0.1) 40%,
+                rgba(59, 130, 246, 0.2) 50%,
+                rgba(59, 130, 246, 0.1) 60%,
+                transparent 80%
+            );
+            transition: all 0.5s ease;
+        }
+
+        .skill-icon-wrapper:hover::before {
+            top: -50%;
+            left: -50%;
+            transform: rotate(45deg);
+        }
+
+        /* Project card hover effect */
+        .project-card {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                120deg,
+                transparent,
+                rgba(59, 130, 246, 0.1),
+                transparent
+            );
+            transform: translateX(-100%);
+            transition: transform 0.6s ease;
+        }
+
+        .project-card:hover::after {
+            transform: translateX(100%);
+        }
+
+        /* Form input effects */
+        .form-input-wrapper {
+            position: relative;
+        }
+
+        .form-input-wrapper::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(
+                90deg,
+                #3b82f6,
+                #60a5fa,
+                #3b82f6
+            );
+            background-size: 200% 100%;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+
+        .form-input-wrapper:focus-within::before {
+            transform: scaleX(1);
+            animation: borderFlow 3s linear infinite;
+        }
+
+        /* Navigation link hover effect */
+        .nav-link {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, #3b82f6, #60a5fa);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        /* Button hover effect */
+        .futuristic-button {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(90deg, #3b82f6, #60a5fa);
+            background-size: 200% 100%;
+            transition: all 0.3s ease;
+        }
+
+        .futuristic-button:hover {
+            background-position: 100% 0;
+            animation: glowPulse 1.5s infinite;
+        }
+
+        /* Section transitions */
+        .section-animate {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+
+        .section-animate.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Futuristic Animations */
+        .hover-glow {
+            transition: all 0.3s ease;
+        }
+
+        .hover-glow:hover {
+            filter: drop-shadow(0 0 8px currentColor);
+            transform: scale(1.1);
+        }
+
+        .skill-tooltip {
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(17, 24, 39, 0.95);
+            color: white;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            width: max-content;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+                        0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        .skill-icon-wrapper:hover .skill-tooltip {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(-10px);
+        }
+
+        .glow-text {
+            text-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+        }
+
+        /* Neon border effect */
+        .skill-icon-wrapper::before {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            background: linear-gradient(45deg, #3b82f6, #60a5fa, #3b82f6);
+            border-radius: 1rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .skill-icon-wrapper:hover::before {
+            opacity: 1;
+            animation: borderRotate 2s linear infinite;
+        }
+
+        @keyframes borderRotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Card Styling */
+        .skill-card {
+            perspective: 1000px;
+            height: 200px;
+            width: 100%;
+        }
+
+        .skill-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+        }
+
+        .skill-card:hover .skill-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .skill-card-front,
+        .skill-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            background: linear-gradient(145deg, #ffffff, #f3f4f6);
+            box-shadow: 
+                5px 5px 15px rgba(0,0,0,0.1),
+                -5px -5px 15px rgba(255,255,255,0.8);
+        }
+
+        .skill-card-front {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .skill-card-back {
+            transform: rotateY(180deg);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Icon Styling */
+        .icon-wrapper {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .tech-icon {
+            width: 100%;
+            height: 100%;
+            transition: transform 0.3s ease;
+        }
+
+        .skill-card:hover .tech-icon {
+            transform: scale(1.1);
+        }
+
+        /* React Icon Animation */
+        .react-icon {
+            animation: spin-slow 20s linear infinite;
+        }
+
+        @keyframes spin-slow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* Glow Effects */
+        .glow-text {
+            text-shadow: 0 0 10px rgba(59, 130, 246, 0.3);
+        }
+
+        /* List Styling */
+        .skill-card-back ul li {
+            transition: transform 0.2s ease;
+            padding-left: 1rem;
+            position: relative;
+        }
+
+        .skill-card-back ul li:hover {
+            transform: translateX(5px);
+            color: #2563eb;
+        }
+
+        .skill-card-back ul li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: #2563eb;
+        }
+
+        /* Category Headers */
+        .skill-category h3 {
+            position: relative;
+            padding-left: 1rem;
+        }
+
+        .skill-category h3::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 4px;
+            height: 24px;
+            background: currentColor;
+            border-radius: 2px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .skill-card {
+                height: 180px;
+            }
+
+            .icon-wrapper {
+                width: 60px;
+                height: 60px;
+            }
+        }
+
+        /* Button hover animation */
+        .hover\:scale-105:hover {
+            transform: scale(1.05);
+        }
+        
+        /* Smooth transition for all hover effects */
+        .transition-all {
+            transition: all 0.3s ease;
+        }
+    </style>
 </head>
-<body>
-    <!-- Header Section -->
-    <header>
-        <nav>
-            <div class="logo-container">
-                <div class="logo">VP</div>
-                <div class="logo-text">
-                    <span class="name">Vivek Pochiraju</span>
-                    <span class="title">Full Stack Developer</span>
+<body class="bg-white text-gray-800">
+    <!-- Header/Navigation -->
+    <header class="fixed w-full top-0 z-50 bg-white shadow-md">
+        <nav class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-4">
+                    <div class="h-10 w-10 bg-blue-600 rounded-lg flex items-center justify-center">
+                        <span class="text-white font-bold text-xl">VP</span>
+                    </div>
+                    <div>
+                        <h1 class="text-xl font-bold text-gray-800">Vivek Pochiraju</h1>
+                        <p class="text-blue-600 text-sm">Full Stack Developer</p>
+                    </div>
                 </div>
+                <ul class="hidden md:flex space-x-8">
+                    <li><a href="#home" class="text-gray-600 hover:text-blue-600 transition-colors">Home</a></li>
+                    <li><a href="#skills" class="text-gray-600 hover:text-blue-600 transition-colors">Skills</a></li>
+                    <li><a href="#projects" class="text-gray-600 hover:text-blue-600 transition-colors">Projects</a></li>
+                    <li><a href="#contact" class="text-gray-600 hover:text-blue-600 transition-colors">Contact</a></li>
+                </ul>
             </div>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
         </nav>
     </header>
 
     <!-- Hero Section -->
-    <section id="home" class="section-padding">
-        <div class="hero">
-            <h1>Hi, I'm <span class="highlight">Vivek Pochiraju</span></h1>
-            <div class="animated-text">
-                <span class="text-rotate"></span>
+    <section id="home" class="min-h-screen flex items-center justify-center pt-20 bg-gray-50">
+        <div class="container mx-auto px-6 text-center">
+            <h1 class="text-5xl md:text-7xl font-bold mb-4 text-gray-800">
+                Hi, I'm <span class="text-blue-600">Vivek Pochiraju</span>
+            </h1>
+            <div class="text-2xl md:text-3xl text-gray-600 mt-4 mb-8">
+                <span class="typing-title"></span>
             </div>
+            
+            <!-- Download Resume Button -->
+            <a href="c:\Users\vivek\Documents\Vivek Resume.pdf" 
+               download 
+               class="inline-flex items-center px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
+                <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M10 3.5a.5.5 0 0 1 .5.5v9.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L9.5 13.793V4a.5.5 0 0 1 .5-.5z"/>
+                    <path d="M2 15.5a.5.5 0 0 1 .5-.5h15a.5.5 0 0 1 0 1h-15a.5.5 0 0 1-.5-.5z"/>
+                </svg>
+                Download Resume
+            </a>
         </div>
     </section>
 
-    <!-- Skills Section -->
-    <section id="skills" class="section-padding">
-        <h2 class="section-title">My Skills</h2>
-        <div class="skills-container">
-            <!-- Frontend Skills -->
-            <div class="skill-card">
-                <h3 class="skill-title">Frontend Development</h3>
-                <div class="skill-list">
-                    <div class="skill-item">
-                        <span>HTML5/CSS3</span>
-                        <div class="skill-bar">
-                            <div class="skill-progress" data-progress="95%"></div>
+    <!-- Technical Skills Section -->
+    <section id="skills" class="py-20 px-6 bg-gradient-to-b from-slate-50 to-white">
+        <div class="container mx-auto">
+            <h2 class="text-4xl font-bold text-center mb-16 text-gray-800 glow-text">Technical Skills</h2>
+            
+            <!-- Skills Grid -->
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+                
+                <!-- React -->
+                <div class="skill-card">
+                    <div class="skill-card-inner">
+                        <div class="skill-card-front">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/2300px-React-icon.svg.png" 
+                                 alt="React" 
+                                 class="w-16 h-16 mx-auto mb-4 animate-spin-slow">
+                            <h3 class="text-lg font-semibold text-gray-800">React</h3>
                         </div>
-                    </div>
-                    <div class="skill-item">
-                        <span>JavaScript</span>
-                        <div class="skill-bar">
-                            <div class="skill-progress" data-progress="90%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <span>React.js</span>
-                        <div class="skill-bar">
-                            <div class="skill-progress" data-progress="85%"></div>
+                        <div class="skill-card-back">
+                            <h4 class="font-bold text-blue-600 mb-2">React Ecosystem</h4>
+                            <ul class="text-sm space-y-2">
+                                <li>• React Hooks</li>
+                                <li>• Redux/Context API</li>
+                                <li>• Next.js</li>
+                                <li>• React Native</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
-            </div>
+    
+                <!-- AWS -->
+                <div class="skill-card">
+                    <div class="skill-card-inner">
+                        <div class="skill-card-front">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Amazon_Web_Services_Logo.svg/2560px-Amazon_Web_Services_Logo.svg.png" 
+                                 alt="AWS" 
+                                 class="w-16 h-16 mx-auto mb-4">
+                            <h3 class="text-lg font-semibold text-gray-800">AWS</h3>
+                        </div>
+                        <div class="skill-card-back">
+                            <h4 class="font-bold text-orange-600 mb-2">Cloud Services</h4>
+                            <ul class="text-sm space-y-2">
+                                <li>• EC2/Lambda</li>
+                                <li>• S3/CloudFront</li>
+                                <li>• RDS/DynamoDB</li>
+                                <li>• CI/CD Pipeline</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
 
-            <!-- Backend Skills -->
-            <div class="skill-card">
-                <h3 class="skill-title">Backend Development</h3>
-                <div class="skill-list">
-                    <div class="skill-item">
-                        <span>Node.js</span>
-                        <div class="skill-bar">
-                            <div class="skill-progress" data-progress="88%"></div>
+                <!-- Python -->
+                <div class="skill-card">
+                    <div class="skill-card-inner">
+                        <div class="skill-card-front">
+                            <div class="icon-wrapper">
+                                <svg viewBox="0 0 128 128" class="w-16 h-16 mx-auto mb-4">
+                                    <linearGradient id="python-original-a" gradientUnits="userSpaceOnUse" x1="70.252" y1="1237.476" x2="170.659" y2="1151.089" gradientTransform="matrix(.563 0 0 -.568 -29.215 707.817)">
+                                        <stop offset="0" stop-color="#5A9FD4"/>
+                                        <stop offset="1" stop-color="#306998"/>
+                                    </linearGradient>
+                                    <linearGradient id="python-original-b" gradientUnits="userSpaceOnUse" x1="209.474" y1="1098.811" x2="173.62" y2="1149.537" gradientTransform="matrix(.563 0 0 -.568 -29.215 707.817)">
+                                        <stop offset="0" stop-color="#FFD43B"/>
+                                        <stop offset="1" stop-color="#FFE873"/>
+                                    </linearGradient>
+                                    <path fill="url(#python-original-a)" d="M63.391 1.988c-4.222.02-8.252.379-11.8 1.007-10.45 1.846-12.346 5.71-12.346 12.837v9.411h24.693v3.137H29.977c-7.176 0-13.46 4.313-15.426 12.521-2.268 9.405-2.368 15.275 0 25.096 1.755 7.311 5.947 12.519 13.124 12.519h8.491V67.234c0-8.151 7.051-15.34 15.426-15.34h24.665c6.866 0 12.346-5.654 12.346-12.548V15.833c0-6.693-5.646-11.72-12.346-12.837-4.244-.706-8.645-1.027-12.866-1.008zM50.037 9.557c2.55 0 4.634 2.117 4.634 4.721 0 2.593-2.083 4.69-4.634 4.69-2.56 0-4.633-2.097-4.633-4.69-.001-2.604 2.073-4.721 4.633-4.721z" transform="translate(0 10.26)"/>
+                                    <path fill="url(#python-original-b)" d="M91.682 28.38v10.966c0 8.5-7.208 15.655-15.426 15.655H51.591c-6.756 0-12.346 5.783-12.346 12.549v23.515c0 6.691 5.818 10.628 12.346 12.547 7.816 2.297 15.312 2.713 24.665 0 6.216-1.801 12.346-5.423 12.346-12.547v-9.412H63.938v-3.138h37.012c7.176 0 9.852-5.005 12.348-12.519 2.578-7.735 2.467-15.174 0-25.096-1.774-7.145-5.161-12.521-12.348-12.521h-9.268zM77.809 87.927c2.561 0 4.634 2.097 4.634 4.692 0 2.602-2.074 4.719-4.634 4.719-2.55 0-4.633-2.117-4.633-4.719 0-2.595 2.083-4.692 4.633-4.692z" transform="translate(0 10.26)"/>
+                                    <radialGradient id="python-original-c" cx="1825.678" cy="444.45" r="26.743" gradientTransform="matrix(0 -.24 -1.055 0 532.979 557.576)" gradientUnits="userSpaceOnUse">
+                                        <stop offset="0" stop-color="#B8B8B8" stop-opacity=".498"/>
+                                        <stop offset="1" stop-color="#7F7F7F" stop-opacity="0"/>
+                                    </radialGradient>
+                                </svg>
+                            </div>
+                            <h3 class="text-lg font-semibold text-gray-800">Python</h3>
                         </div>
-                    </div>
-                    <div class="skill-item">
-                        <span>Express.js</span>
-                        <div class="skill-bar">
-                            <div class="skill-progress" data-progress="85%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <span>MongoDB</span>
-                        <div class="skill-bar">
-                            <div class="skill-progress" data-progress="82%"></div>
+                        <div class="skill-card-back">
+                            <h4 class="font-bold text-blue-600 mb-2">Python Ecosystem</h4>
+                            <ul class="text-sm space-y-2">
+                                <li>• Django/Flask/FastAPI</li>
+                                <li>• Data Science (Pandas, NumPy)</li>
+                                <li>• Machine Learning (TensorFlow, PyTorch)</li>
+                                <li>• Automation & Scripting</li>
+                                <li>• Web Scraping (BeautifulSoup, Selenium)</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
+                <!-- Prompt Engineering -->
+<div class="skill-card">
+    <div class="skill-card-inner">
+        <div class="skill-card-front">
+            <div class="icon-wrapper">
+                <svg viewBox="0 0 24 24" class="w-16 h-16 mx-auto mb-4">
+                    <!-- Custom AI/Prompt Engineering Icon -->
+                    <path fill="#00A67E" d="M12,2A10,10 0 0,1 22,12A10,10 0 0,1 12,22A10,10 0 0,1 2,12A10,10 0 0,1 12,2M12,4A8,8 0 0,0 4,12A8,8 0 0,0 12,20A8,8 0 0,0 20,12A8,8 0 0,0 12,4M12,6A6,6 0 0,1 18,12A6,6 0 0,1 12,18A6,6 0 0,1 6,12A6,6 0 0,1 12,6M12,8A4,4 0 0,0 8,12A4,4 0 0,0 12,16A4,4 0 0,0 16,12A4,4 0 0,0 12,8Z"/>
+                    <path fill="#00A67E" d="M12,10A2,2 0 0,1 14,12A2,2 0 0,1 12,14A2,2 0 0,1 10,12A2,2 0 0,1 12,10Z"/>
+                </svg>
             </div>
+            <h3 class="text-lg font-semibold text-gray-800">Prompt Engineering</h3>
+        </div>
+        <div class="skill-card-back">
+            <h4 class="font-bold text-emerald-600 mb-2">AI & LLM Expertise</h4>
+            <ul class="text-sm space-y-2">
+                <li>• GPT-3/4 Optimization</li>
+                <li>• LangChain Framework</li>
+                <li>• Few-shot Learning</li>
+                <li>• Context Engineering</li>
+                <li>• RAG Implementation</li>
+            </ul>
+        </div>
+    </div>
+</div>
 
-            <!-- Other Skills -->
-            <div class="skill-card">
-                <h3 class="skill-title">Other Skills</h3>
-                <div class="skill-list">
-                    <div class="skill-item">
-                        <span>Git & GitHub</span>
-                        <div class="skill-bar">
-                            <div class="skill-progress" data-progress="92%"></div>
+<style>
+    .skill-card {
+        perspective: 1000px;
+        height: 200px;
+    }
+
+    .skill-card-inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        transition: transform 0.8s;
+        transform-style: preserve-3d;
+    }
+
+    .skill-card:hover .skill-card-inner {
+        transform: rotateY(180deg);
+    }
+
+    .skill-card-front,
+    .skill-card-back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        backface-visibility: hidden;
+        border-radius: 1rem;
+        padding: 1.5rem;
+        background: linear-gradient(145deg, #ffffff, #f3f4f6);
+        box-shadow: 
+            5px 5px 15px rgba(0,0,0,0.1),
+            -5px -5px 15px rgba(255,255,255,0.8);
+    }
+
+    .skill-card-back {
+        transform: rotateY(180deg);
+    }
+
+    .icon-wrapper {
+        width: 80px;
+        height: 80px;
+        margin: 0 auto 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: transform 0.3s ease;
+    }
+
+    .skill-card:hover .icon-wrapper {
+        transform: scale(1.1);
+    }
+</style>
+
+                <!-- Machine Learning -->
+                <div class="skill-card">
+                    <div class="skill-card-inner">
+                        <div class="skill-card-front">
+                            <div class="flex flex-col items-center">
+                                <div class="icon-wrapper">
+                                    <svg viewBox="0 0 128 128" class="w-16 h-16 mx-auto mb-4">
+                                        <!-- TensorFlow Logo -->
+                                        <path fill="#FF6F00" d="M53.172 70.844l-9.69-5.594 10.273-5.938 9.692 5.594z"/>
+                                        <path fill="#FF6F00" d="M63.445 81.285V70.142l9.692-5.594v11.143z"/>
+                                        <path fill="#FF6F00" d="M53.172 70.844v11.143L43.48 87.58V76.438z"/>
+                                        <path fill="#FF9100" d="M53.172 92.43l-9.69-5.594 9.69-5.594 9.692 5.594z"/>
+                                        <path fill="#FF9100" d="M63.445 102.87V91.728l9.692-5.594v11.143z"/>
+                                        <path fill="#FF9100" d="M53.172 92.43v11.143l-9.692 5.594V98.024z"/>
+                                        <path fill="#FF6F00" d="M73.137 81.285l-9.692-5.594 10.273-5.938 9.692 5.594z"/>
+                                        <path fill="#FF6F00" d="M83.41 91.728V80.583l9.692-5.594v11.143z"/>
+                                        <path fill="#FF6F00" d="M73.137 81.285v11.143l-9.692 5.594V86.88z"/>
+                                    </svg>
+                                </div>
+                                <h3 class="text-lg font-semibold text-gray-800">Machine Learning</h3>
+                            </div>
                         </div>
-                    </div>
-                    <div class="skill-item">
-                        <span>RESTful APIs</span>
-                        <div class="skill-bar">
-                            <div class="skill-progress" data-progress="88%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <span>UI/UX Design</span>
-                        <div class="skill-bar">
-                            <div class="skill-progress" data-progress="80%"></div>
+                        <div class="skill-card-back">
+                            <h4 class="font-bold text-orange-600 mb-2">ML & Deep Learning</h4>
+                            <ul class="text-sm space-y-2">
+                                <li>• TensorFlow & Keras</li>
+                                <li>• PyTorch & scikit-learn</li>
+                                <li>• Computer Vision (OpenCV)</li>
+                                <li>• NLP (NLTK, spaCy)</li>
+                                <li>• Data Processing (NumPy, Pandas)</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
+
+                <!-- Add more skill cards as needed -->
+
             </div>
         </div>
+
+        <style>
+            /* Modern Card Styling */
+            .skill-card {
+                perspective: 1000px;
+                height: 200px;
+            }
+
+            .skill-card-inner {
+                position: relative;
+                width: 100%;
+                height: 100%;
+                transition: transform 0.8s;
+                transform-style: preserve-3d;
+            }
+
+            .skill-card:hover .skill-card-inner {
+                transform: rotateY(180deg);
+            }
+
+            .skill-card-front,
+            .skill-card-back {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                backface-visibility: hidden;
+                border-radius: 1rem;
+                padding: 1.5rem;
+            }
+
+            .skill-card-front {
+                background: linear-gradient(145deg, #ffffff, #f3f4f6);
+                box-shadow: 
+                    5px 5px 15px rgba(0,0,0,0.1),
+                    -5px -5px 15px rgba(255,255,255,0.8);
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .skill-card-back {
+                background: linear-gradient(145deg, #ffffff, #f3f4f6);
+                transform: rotateY(180deg);
+                box-shadow: 
+                    5px 5px 15px rgba(0,0,0,0.1),
+                    -5px -5px 15px rgba(255,255,255,0.8);
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+
+            /* Animations */
+            @keyframes spin-slow {
+                from { transform: rotate(0deg); }
+                to { transform: rotate(360deg); }
+            }
+
+            .animate-spin-slow {
+                animation: spin-slow 20s linear infinite;
+            }
+
+            /* Hover Effects */
+            .skill-card:hover {
+                transform: translateY(-5px);
+            }
+
+            .skill-card::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: radial-gradient(
+                    circle at center,
+                    rgba(255, 255, 255, 0.8) 0%,
+                    rgba(255, 255, 255, 0) 70%
+                );
+                opacity: 0;
+                transition: opacity 0.3s ease;
+                pointer-events: none;
+            }
+
+            .skill-card:hover::before {
+                opacity: 1;
+            }
+
+            /* Glow Effect */
+            .glow-text {
+                text-shadow: 0 0 10px rgba(59, 130, 246, 0.3);
+            }
+
+            /* List Styling */
+            .skill-card-back ul li {
+                transition: transform 0.2s ease;
+                padding-left: 1rem;
+                position: relative;
+            }
+
+            .skill-card-back ul li:hover {
+                transform: translateX(5px);
+                color: #2563eb;
+            }
+
+            .skill-card-back ul li::before {
+                content: '•';
+                position: absolute;
+                left: 0;
+                color: #2563eb;
+            }
+        </style>
     </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="section-padding">
-        <h2 class="section-title">My Projects</h2>
-        <div class="projects-grid">
-            <div class="project-card">
-                <div class="light-effect"></div>
-                <h3>Project 1</h3>
-                <p>Description of project 1</p>
-            </div>
-            <div class="project-card">
-                <div class="light-effect"></div>
-                <h3>Project 2</h3>
-                <p>Description of project 2</p>
-            </div>
-            <div class="project-card">
-                <div class="light-effect"></div>
-                <h3>Project 3</h3>
-                <p>Description of project 3</p>
+    <section id="projects" class="py-20 px-6 bg-gray-50">
+        <div class="container mx-auto">
+            <h2 class="text-4xl font-bold text-center mb-16 text-gray-800">My Projects</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="bg-white rounded-xl overflow-hidden group hover:transform hover:scale-105 transition-all duration-300 shadow-lg">
+                    <img src="https://tse3.mm.bing.net/th?id=OIP.p4uEQR1WTS_BeCgxbAPcvwHaEK&pid=Api&P=0&h=180" 
+                         alt="Project 1" 
+                         class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-blue-600 mb-2">Chatbot</h3>
+                        <p class="text-gray-600 mb-4">A chatbot that simulates human conversation through voice commands or text chats using AI.</p>
+                        <div class="flex space-x-4">
+                            <a href="#" class="px-4 py-2 border border-blue-600 text-blue-600 rounded-lg hover:bg-blue-600 hover:text-white transition-colors">Live Demo</a>
+                            <a href="#" class="px-4 py-2 border border-blue-600 text-blue-600 rounded-lg hover:bg-blue-600 hover:text-white transition-colors">Source Code</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="bg-white rounded-xl overflow-hidden group hover:transform hover:scale-105 transition-all duration-300 shadow-lg">
+                    <img src="https://tse4.mm.bing.net/th?id=OIP.od5neF1COpwS6Nizg-DuYwHaFF&pid=Api&P=0&h=180" 
+                         alt="Project 2" 
+                         class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-blue-600 mb-2">Tic Tac Toe</h3>
+                        <p class="text-gray-600 mb-4">A web-based implementation of the classic two-player game with modern UI.</p>
+                        <div class="flex space-x-4">
+                            <a href="#" class="px-4 py-2 border border-blue-600 text-blue-600 rounded-lg hover:bg-blue-600 hover:text-white transition-colors">Live Demo</a>
+                            <a href="#" class="px-4 py-2 border border-blue-600 text-blue-600 rounded-lg hover:bg-blue-600 hover:text-white transition-colors">Source Code</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="bg-white rounded-xl overflow-hidden group hover:transform hover:scale-105 transition-all duration-300 shadow-lg">
+                    <img src="https://learn.microsoft.com/en-us/power-bi/create-reports/media/service-dashboards/power-bi-dashboard2.png" 
+                         alt="Project 3" 
+                         class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-blue-600 mb-2">Power BI Dashboard</h3>
+                        <p class="text-gray-600 mb-4">Interactive data visualization dashboard created using Microsoft Power BI.</p>
+                        <div class="flex space-x-4">
+                            <a href="#" class="px-4 py-2 border border-blue-600 text-blue-600 rounded-lg hover:bg-blue-600 hover:text-white transition-colors">Live Demo</a>
+                            <a href="#" class="px-4 py-2 border border-blue-600 text-blue-600 rounded-lg hover:bg-blue-600 hover:text-white transition-colors">Source Code</a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="section-padding">
-        <h2 class="section-title">Contact Me</h2>
-        <form id="contact-form">
-            <div class="form-group">
-                <input type="text" id="name" required>
-                <label for="name">Name</label>
-            </div>
-            <div class="form-group">
-                <input type="email" id="email" required>
-                <label for="email">Email</label>
-            </div>
-            <div class="form-group">
-                <textarea id="message" required></textarea>
-                <label for="message">Message</label>
-            </div>
-            <button type="submit" class="submit-btn">Send Message</button>
-        </form>
+    <section id="contact" class="py-20 px-6 bg-white">
+        <div class="container mx-auto max-w-2xl">
+            <h2 class="text-4xl font-bold text-center mb-16 text-gray-800">Contact Me</h2>
+            <form class="space-y-6">
+                <div class="relative">
+                    <input type="text" id="name" required
+                           class="w-full bg-gray-50 rounded-lg px-4 py-3 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all">
+                    <label for="name" class="absolute left-4 top-3 text-gray-500 transition-all">
+                        Name
+                    </label>
+                </div>
+                <div class="relative">
+                    <input type="email" id="email" required
+                           class="w-full bg-gray-50 rounded-lg px-4 py-3 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all">
+                    <label for="email" class="absolute left-4 top-3 text-gray-500 transition-all">
+                        Email
+                    </label>
+                </div>
+                <div class="relative">
+                    <textarea id="message" rows="4" required
+                              class="w-full bg-gray-50 rounded-lg px-4 py-3 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-all"></textarea>
+                    <label for="message" class="absolute left-4 top-3 text-gray-500 transition-all">
+                        Message
+                    </label>
+                </div>
+                <button type="submit" 
+                        class="w-full bg-blue-600 text-white font-bold py-3 rounded-lg hover:bg-blue-700 transition-colors">
+                    Send Message
+                </button>
+            </form>
+        </div>
     </section>
 
-    <script src="script.js"></script>
+    <style>
+        /* Form input animation */
+        .relative input:focus ~ label,
+        .relative input:valid ~ label,
+        .relative textarea:focus ~ label,
+        .relative textarea:valid ~ label {
+            @apply transform -translate-y-6 scale-75 text-blue-600;
+        }
+    </style>
+
+    <script>
+        // Add smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Intersection Observer for section animations
+        const sections = document.querySelectorAll('.section-animate');
+        
+        const sectionObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        sections.forEach(section => {
+            sectionObserver.observe(section);
+        });
+    </script>
 </body>
 </html> 
