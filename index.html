@@ -359,60 +359,60 @@
 </head>
 <body class="bg-white text-gray-800">
     <!-- Header/Navigation -->
-    <header class="fixed w-full top-0 z-50 bg-gray-800 shadow-md">
-        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="flex items-center space-x-4">
-                <div class="h-10 w-10 bg-blue-600 rounded-lg flex items-center justify-center">
-                    <span class="text-white font-bold text-xl">VP</span>
-                </div>
-                <div>
-                    <h1 class="text-xl font-bold text-gray-200">Vivek Pochiraju</h1>
-                    <p class="text-blue-400 text-sm">Full Stack Developer</p>
-                </div>
+<header class="fixed w-full top-0 z-50 bg-gray-800 shadow-md">
+    <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+        <div class="flex items-center space-x-4">
+            <div class="h-10 w-10 bg-blue-600 rounded-lg flex items-center justify-center">
+                <span class="text-white font-bold text-xl">VP</span>
             </div>
-            <div class="md:hidden">
-                <button id="menu-toggle" class="text-white focus:outline-none">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
-                    </svg>
-                </button>
+            <div>
+                <h1 class="text-xl font-bold text-gray-200">Vivek Pochiraju</h1>
+                <p class="text-blue-400 text-sm">Full Stack Developer</p>
             </div>
-            <ul id="menu" class="hidden md:flex space-x-8">
-                <li><a href="#home" class="nav-link">Home</a></li>
-                <li><a href="#skills" class="nav-link">Skills</a></li>
-                <li><a href="#projects" class="nav-link">Projects</a></li>
-                <li><a href="#contact" class="nav-link">Contact</a></li>
-            </ul>
-        </nav>
-        <div id="mobile-menu" class="hidden md:hidden bg-gray-800">
-            <ul class="flex flex-col space-y-2 p-4">
-                <li><a href="#home" class="nav-link text-white hover:text-blue-400">Home</a></li>
-                <li><a href="#skills" class="nav-link text-white hover:text-blue-400">Skills</a></li>
-                <li><a href="#projects" class="nav-link text-white hover:text-blue-400">Projects</a></li>
-                <li><a href="#contact" class="nav-link text-white hover:text-blue-400">Contact</a></li>
-            </ul>
         </div>
-    </header>
-    <script>
-        const menuToggle = document.getElementById('menu-toggle');
-        const mobileMenu = document.getElementById('mobile-menu');
-    
-        menuToggle.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-    
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                mobileMenu.classList.add('hidden'); // Hide mobile menu after clicking
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
+        <div class="md:hidden">
+            <button id="menu-toggle" class="text-white focus:outline-none">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+        </div>
+        <ul id="menu" class="hidden md:flex space-x-8">
+            <li><a href="#home" class="nav-link text-white hover:text-blue-400">Home</a></li>
+            <li><a href="#skills" class="nav-link text-white hover:text-blue-400">Skills</a></li>
+            <li><a href="#projects" class="nav-link text-white hover:text-blue-400">Projects</a></li>
+            <li><a href="#contact" class="nav-link text-white hover:text-blue-400">Contact</a></li>
+        </ul>
+    </nav>
+    <div id="mobile-menu" class="hidden md:hidden bg-gray-800">
+        <ul class="flex flex-col space-y-2 p-4">
+            <li><a href="#home" class="nav-link text-white hover:text-blue-400">Home</a></li>
+            <li><a href="#skills" class="nav-link text-white hover:text-blue-400">Skills</a></li>
+            <li><a href="#projects" class="nav-link text-white hover:text-blue-400">Projects</a></li>
+            <li><a href="#contact" class="nav-link text-white hover:text-blue-400">Contact</a></li>
+        </ul>
+    </div>
+</header>
+
+<script>
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    menuToggle.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+    });
+
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            mobileMenu.classList.add('hidden'); // Hide mobile menu after clicking
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
             });
         });
-    </script>
-    <!-- Hero Section -->
+    });
+</script>
     <section id="home" class="min-h-screen flex items-center justify-center pt-20 bg-gray-50">
         <div class="container mx-auto px-6 text-center">
             <h1 class="text-5xl md:text-7xl font-bold mb-4 text-gray-800">
