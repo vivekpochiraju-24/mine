@@ -359,26 +359,39 @@
 </head>
 <body class="bg-white text-gray-800">
     <!-- Header/Navigation -->
-    <header class="fixed w-full top-0 z-50 bg-white shadow-md">
-        <nav class="container mx-auto px-6 py-4">
-            <div class="flex justify-between items-center">
-                <div class="flex items-center space-x-4">
-                    <div class="h-10 w-10 bg-blue-600 rounded-lg flex items-center justify-center">
-                        <span class="text-white font-bold text-xl">VP</span>
-                    </div>
-                    <div>
-                        <h1 class="text-xl font-bold text-gray-800">Vivek Pochiraju</h1>
-                        <p class="text-blue-600 text-sm">Full Stack Developer</p>
-                    </div>
+    <header class="fixed w-full top-0 z-50 bg-gray-800 shadow-md">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-4">
+                <div class="h-10 w-10 bg-blue-600 rounded-lg flex items-center justify-center">
+                    <span class="text-white font-bold text-xl">VP</span>
                 </div>
-                <ul class="hidden md:flex space-x-8">
-                    <li><a href="#home" class="text-gray-600 hover:text-blue-600 transition-colors">Home</a></li>
-                    <li><a href="#skills" class="text-gray-600 hover:text-blue-600 transition-colors">Skills</a></li>
-                    <li><a href="#projects" class="text-gray-600 hover:text-blue-600 transition-colors">Projects</a></li>
-                    <li><a href="#contact" class="text-gray-600 hover:text-blue-600 transition-colors">Contact</a></li>
-                </ul>
+                <div>
+                    <h1 class="text-xl font-bold text-gray-200">Vivek Pochiraju</h1>
+                    <p class="text-blue-400 text-sm">Full Stack Developer</p>
+                </div>
             </div>
+            <div class="md:hidden">
+                <button id="menu-toggle" class="text-white focus:outline-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                    </svg>
+                </button>
+            </div>
+            <ul id="menu" class="hidden md:flex space-x-8">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
         </nav>
+        <div id="mobile-menu" class="hidden md:hidden bg-gray-800">
+            <ul class="flex flex-col space-y-2 p-4">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
     </header>
 
     <!-- Hero Section -->
@@ -490,6 +503,79 @@
                         </div>
                     </div>
                 </div>
+                <!-- HTML & CSS -->
+<div class="skill-card">
+    <div class="skill-card-inner">
+        <div class="skill-card-front">
+            <div class="icon-wrapper">
+                <svg viewBox="0 0 24 24" class="w-16 h-16 mx-auto mb-4">
+                    <!-- HTML & CSS Icon -->
+                    <path fill="#E44D26" d="M3 3h18v18H3V3zm2 2v14h14V5H5zm2 2h10v10H7V7z"/>
+                    <path fill="#1572B6" d="M7 7h10v10H7V7z"/>
+                </svg>
+            </div>
+            <h3 class="text-lg font-semibold text-gray-800">HTML & CSS</h3>
+        </div>
+        <div class="skill-card-back">
+            <h4 class="font-bold text-emerald-600 mb-2">Web Development Skills</h4>
+            <ul class="text-sm space-y-2">
+                <li>• Semantic HTML5</li>
+                <li>• Responsive Design</li>
+                <li>• CSS Flexbox & Grid</li>
+                <li>• Cross-Browser Compatibility</li>
+                <li>• CSS Preprocessors (Sass, LESS)</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- Java -->
+<div class="skill-card">
+    <div class="skill-card-inner">
+        <div class="skill-card-front">
+            <div class="icon-wrapper">
+                <svg viewBox="0 0 24 24" class="w-16 h-16 mx-auto mb-4">
+                    <!-- Java Icon -->
+                    <path fill="#007396" d="M12 0C5.373 0 0 5.373 0 12c0 5.25 3.438 9.688 8.207 11.285.6.111.793-.261.793-.577 0-.287-.011-1.243-.017-2.25-3.338.724-4.042-1.607-4.042-1.607-5.8-14.7-2.75-18.6-2.75-18.6 0-1.224.802-1.884 1.807-1.884 1.054 0 1.956.09 2.207.124 1.547 1.02 2.227 2.346 2.227 3.867 0 5.633-3.437 6.854-6.707 7.4.5.419.934 1.155.934 2.362 0 1.612-.01 2.917-.01 3.316 0 .315.192.69.751.59C19.176 22.223 24 17.75 24 12.5 24 5.873 18.627 0 12 0zm-1.5 17.25h-1.5v-1.5h1.5v1.5zm0-3h-1.5v-1.5h1.5v1.5zm0-3h-1.5v-1.5h1.5v1.5zm3 6h-1.5v-1.5h1.5v1.5zm0-3h-1.5v-1.5h1.5v1.5zm0-3h-1.5v-1.5h1.5v1.5z"/>
+                </svg>
+            </div>
+            <h3 class="text-lg font-semibold text-gray-800">Java</h3>
+        </div>
+        <div class="skill-card-back">
+            <h4 class="font-bold text-emerald-600 mb-2">Java Development Skills</h4>
+            <ul class="text-sm space-y-2">
+                <li>• Object-Oriented Programming</li>
+                <li>• Java SE & EE</li>
+                <li>• Spring Framework</li>
+                <li>• RESTful Web Services</li>
+                <li>• Multithreading & Concurrency</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- C Language -->
+<div class="skill-card">
+    <div class="skill-card-inner">
+        <div class="skill-card-front">
+            <div class="icon-wrapper">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-16 h-16 mx-auto mb-4" viewBox="0 0 64 64">
+                    <path fill="#00599C" d="M32 0C14.3 0 0 14.3 0 32c0 17.7 14.3 32 32 32s32-14.3 32-32S49.7 0 32 0zm0 60C15.5 60 4 48.5 4 32S15.5 4 32 4s28 11.5 28 28-11.5 28-28 28z"/>
+                    <path fill="#A8B400" d="M32 8c-13.3 0-24 10.7-24 24s10.7 24 24 24 24-10.7 24-24-10.7-24-24-24zm0 44c-11.1 0-20-8.9-20-20s8.9-20 20-20 20 8.9 20 20-8.9 20-20 20z"/>
+                </svg>
+            </div>
+            <h3 class="text-lg font-semibold text-gray-800">C Language</h3>
+        </div>
+        <div class="skill-card-back">
+            <h4 class="font-bold text-emerald-600 mb-2">C Programming Skills</h4>
+            <ul class="text-sm space-y-2">
+                <li>• Procedural Programming</li>
+                <li>• Memory Management</li>
+                <li>• Data Structures</li>
+                <li>• File I/O</li>
+                <li>• System Programming</li>
+            </ul>
+        </div>
+    </div>
+</div>
                 <!-- Prompt Engineering -->
 <div class="skill-card">
     <div class="skill-card-inner">
@@ -549,22 +635,113 @@
             -5px -5px 15px rgba(255,255,255,0.8);
     }
 
-    .skill-card-back {
-        transform: rotateY(180deg);
+    .skill-card-front {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
 
+    .skill-card-back {
+        transform: rotateY(180deg);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* Icon Styling */
     .icon-wrapper {
         width: 80px;
         height: 80px;
-        margin: 0 auto 1rem;
+        margin-bottom: 1rem;
         display: flex;
         align-items: center;
         justify-content: center;
+    }
+
+    .tech-icon {
+        width: 100%;
+        height: 100%;
         transition: transform 0.3s ease;
     }
 
-    .skill-card:hover .icon-wrapper {
+    .skill-card:hover .tech-icon {
         transform: scale(1.1);
+    }
+
+    /* React Icon Animation */
+    .react-icon {
+        animation: spin-slow 20s linear infinite;
+    }
+
+    @keyframes spin-slow {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+    }
+
+    /* Glow Effects */
+    .glow-text {
+        text-shadow: 0 0 10px rgba(59, 130, 246, 0.3);
+    }
+
+    /* List Styling */
+    .skill-card-back ul li {
+        transition: transform 0.2s ease;
+        padding-left: 1rem;
+        position: relative;
+    }
+
+    .skill-card-back ul li:hover {
+        transform: translateX(5px);
+        color: #2563eb;
+    }
+
+    .skill-card-back ul li::before {
+        content: '•';
+        position: absolute;
+        left: 0;
+        color: #2563eb;
+    }
+
+    /* Category Headers */
+    .skill-category h3 {
+        position: relative;
+        padding-left: 1rem;
+    }
+
+    .skill-category h3::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 4px;
+        height: 24px;
+        background: currentColor;
+        border-radius: 2px;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .skill-card {
+            height: 180px;
+        }
+
+        .icon-wrapper {
+            width: 60px;
+            height: 60px;
+        }
+    }
+
+    /* Button hover animation */
+    .hover\:scale-105:hover {
+        transform: scale(1.05);
+    }
+    
+    /* Smooth transition for all hover effects */
+    .transition-all {
+        transition: all 0.3s ease;
     }
 </style>
 
@@ -806,6 +983,25 @@
                     Send Message
                 </button>
             </form>
+
+            <!-- Social Links -->
+            <div class="mt-8 text-center">
+                <h3 class="text-lg font-semibold text-gray-800 mb-2">Connect with me:</h3>
+                <div class="flex justify-center space-x-4">
+                    <a href="https://www.linkedin.com/in/vivek-pochiraju-996b042a9/?lipi=urn%3Ali%3Apage%3Ad_flagship3_feed%3Bumsmt3DuSSuKoXZmlBG1nQ%3D%3D" target="_blank" class="flex items-center text-blue-600 hover:text-blue-800 transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 mr-1" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M19 0H5C2.24 0 0 2.24 0 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5V5c0-2.76-2.24-5-5-5zm-11 20H7v-8h2v8zm-1-9.2c-.65 0-1.2-.55-1.2-1.2s.55-1.2 1.2-1.2 1.2.55 1.2 1.2-.55 1.2-1.2 1.2zm12 9.2h-2v-4.5c0-1.07-.02-2.45-1.5-2.45-1.5 0-1.73 1.17-1.73 2.37V20h-2v-8h2v1.1c.27-.52.93-1.1 1.93-1.1 2.07 0 2.45 1.36 2.45 3.14V20z"/>
+                        </svg>
+                        LinkedIn
+                    </a>
+                    <a href="https://github.com/" target="_blank" class="flex items-center text-gray-600 hover:text-gray-800 transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 mr-1" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 .5C5.373.5 0 5.873 0 12.5c0 5.25 3.438 9.688 8.207 11.285.6.111.793-.261.793-.577 0-.287-.011-1.243-.017-2.25-3.338.724-4.042-1.607-4.042-1.607-5.8-14.7-2.75-18.6-2.75-18.6 0-1.224.802-1.884 1.807-1.884 1.054 0 1.956.09 2.207.124 1.547 1.02 2.227 2.346 2.227 3.867 0 5.633-3.437 6.854-6.707 7.4.5.419.934 1.155.934 2.362 0 1.612-.01 2.917-.01 3.316 0 .315.192.69.751.59C19.176 22.223 24 17.75 24 12.5 24 5.873 18.627.5 12 .5z"/>
+                        </svg>
+                        GitHub
+                    </a>
+                </div>
+            </div>
         </div>
     </section>
 
